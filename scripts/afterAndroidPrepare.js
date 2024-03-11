@@ -12,7 +12,7 @@ module.exports = function (context) {
   var applicationNode = androidManifest.data.find('application');
 
   // detect Parse notification icon
-  var parsePushNotificationIcon = configXml.data.find('preference[@name="ParseNotificationIcon"]').get('value');
+  var parsePushNotificationIcon = configXml.data.find('preference[@name="ParseNotificationIcon"]')?.get('value');
   if (!!parsePushNotificationIcon) {
     // add to AndroidManifest.xml
     var manifestPushNotificationIconNode = applicationNode.find('meta-data[@android:name="com.parse.push.notification_icon"]');

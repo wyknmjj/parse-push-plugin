@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugin xmlns="http://www.apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="parse-push-plugin" version="1.0.8">
+<plugin xmlns="http://www.apache.org/cordova/ns/plugins/1.0"
+   xmlns:android="http://schemas.android.com/apk/res/android" id="parse-push-plugin" version="1.0.8">
    <name>ParsePushPlugin</name>
    <description>Parse.Push plugin for phonegap/cordova/ionic framework</description>
-	<keywords>cordova,phonegap,ionic framework, parse server, parse push, push notification</keywords>
+   <keywords>cordova,phonegap,ionic framework, parse server, parse push, push notification</keywords>
 
    <js-module src="www/parse-push-plugin.js" name="ParsePushPlugin">
       <clobbers target="ParsePushPlugin" />
@@ -24,7 +25,7 @@
                <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
          </receiver>
-         <receiver android:name="com.parse.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+         <receiver android:exported="true" android:name="com.parse.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
@@ -67,10 +68,10 @@
          </feature>
       </config-file>
       <config-file target="*-Debug.plist" parent="aps-environment">
-      	<string>development</string>
+         <string>development</string>
       </config-file>
       <config-file target="*-Release.plist" parent="aps-environment">
-      	<string>production</string>
+         <string>production</string>
       </config-file>
       <header-file src="src/ios/ParsePushPlugin.h" />
       <source-file src="src/ios/ParsePushPlugin.m" />
@@ -91,19 +92,19 @@
       <framework src="libsqlite3.tbd" />
       <framework src="src/ios/Frameworks/Parse.framework" custom="true" />
       <podspec>
-	<config>
-	     <source url="https://github.com/CocoaPods/Specs.git"/>
-	</config>
-	<pods use-frameworks="true">
-	     <pod name="Bolts" git="https://github.com/BoltsFramework/Bolts-ObjC" branch="main" />
-	</pods>
+         <config>
+            <source url="https://github.com/CocoaPods/Specs.git"/>
+         </config>
+         <pods use-frameworks="true">
+            <pod name="Bolts" git="https://github.com/BoltsFramework/Bolts-ObjC" branch="main" />
+         </pods>
       </podspec>
    </platform>
 
    <platform name="windows">
-     <js-module src="src/windows/jsTimezoneDetect.min.js" name="jsTimezoneDetect" />
-     <js-module src="src/windows/ParsePushPluginProxy.js" name="ParsePushPluginProxy">
-       <merges target="" />
-     </js-module>
+      <js-module src="src/windows/jsTimezoneDetect.min.js" name="jsTimezoneDetect" />
+      <js-module src="src/windows/ParsePushPluginProxy.js" name="ParsePushPluginProxy">
+         <merges target="" />
+      </js-module>
    </platform>
 </plugin>
